@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocerific - Grocery Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛒 Grocerific</h1>
+            <p>Your Personal Grocery Management System</p>
+        </header>
+
+        <!-- Add Item Form -->
+        <section class="form-section">
+            <h2>Add New Item</h2>
+            <form id="addItemForm" class="item-form">
+                <div class="form-group">
+                    <label for="name">Item Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Fruits">Fruits</option>
+                        <option value="Vegetables">Vegetables</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Meat">Meat</option>
+                        <option value="Bakery">Bakery</option>
+                        <option value="Beverages">Beverages</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Frozen">Frozen</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="price">Price ($):</label>
+                        <input type="number" id="price" name="price" step="0.01" min="0" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Add Item</button>
+            </form>
+        </section>
+
+        <!-- Edit Item Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Item</h2>
+                <form id="editItemForm" class="item-form">
+                    <input type="hidden" id="editId" name="id">
+                    
+                    <div class="form-group">
+                        <label for="editName">Item Name:</label>
+                        <input type="text" id="editName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editCategory">Category:</label>
+                        <select id="editCategory" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Fruits">Fruits</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Meat">Meat</option>
+                            <option value="Bakery">Bakery</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Snacks">Snacks</option>
+                            <option value="Frozen">Frozen</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editQuantity">Quantity:</label>
+                            <input type="number" id="editQuantity" name="quantity" min="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editPrice">Price ($):</label>
+                            <input type="number" id="editPrice" name="price" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editDescription">Description:</label>
+                        <textarea id="editDescription" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Update Item</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Items List -->
+        <section class="items-section">
+            <h2>Grocery Items</h2>
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Search items...">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Meat">Meat</option>
+                    <option value="Bakery">Bakery</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Frozen">Frozen</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div id="itemsContainer" class="items-grid">
+                <!-- Items will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- Loading and Messages -->
+        <div id="loading" class="loading hidden">Loading...</div>
+        <div id="message" class="message hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
